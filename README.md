@@ -1,6 +1,6 @@
 # Sahayak — Government Scheme Finder Chatbot
 
-A multilingual, voice-enabled chatbot that helps people in India discover government schemes, scholarships, and subsidies they may be eligible for. Users can **tap, type, or speak** in their own language.
+A multilingual, voice-enabled chatbot that helps people in India discover government schemes, scholarships, and subsidies they may be eligible for. Users can **tap, type, or speak**.
 
 Built for the **SerpApi India Hackathon 2026**. Track: *Knowledge & Public Interest*.
 
@@ -38,46 +38,74 @@ The Flask backend (`app.py`) builds a search query from the user's selections or
 - Browser Web Speech API (voice input and output)
 - Google Website Translator widget (result translation)
 
+## Requirements
+
+- Python 3.9 or newer
+- A free SerpApi API key (250 free searches per month): https://serpapi.com
+- Chrome or Edge (recommended, for voice features)
+- An internet connection
+
 ## Setup instructions
 
-1. Clone this repository
+1. **Clone this repository**
 ```
    git clone https://github.com/Madhumitha2012/sahayak-scheme-finder-.git
    cd sahayak-scheme-finder-
 ```
-2. Create and activate a virtual environment
+
+2. **Create a virtual environment**
 ```
    python -m venv venv
-   venv\Scripts\activate        # on Mac/Linux: source venv/bin/activate
 ```
-3. Install dependencies
+
+3. **Activate it**
+   - Windows (Command Prompt): `venv\Scripts\activate`
+   - Windows (PowerShell): `venv\Scripts\Activate.ps1`
+   - Mac/Linux: `source venv/bin/activate`
+
+4. **Install dependencies**
 ```
    python -m pip install -r requirements.txt
 ```
-4. Add your SerpApi key
-   - Get a free key at [serpapi.com](https://serpapi.com) (250 free searches per month)
-   - Copy `.env.example` to `.env`
-   - Put your key in `.env`:
+
+5. **Add your SerpApi key**
+   - Copy `.env.example` to a new file named `.env`
+     - Windows: `copy .env.example .env`
+     - Mac/Linux: `cp .env.example .env`
+   - Open `.env` and replace the placeholder with your key:
 ```
-   SERPAPI_KEY=your_actual_key_here
+     SERPAPI_KEY=your_actual_key_here
 ```
-5. Run the app
+
+6. **Run the app**
 ```
    python app.py
 ```
-6. Open `http://127.0.0.1:5000` in Chrome or Edge.
+
+7. **Open the app** at http://127.0.0.1:5000 in Chrome or Edge.
+
+> **Windows tip:** if `python` is not recognized, use `py` instead (for example `py -m venv venv`, `py -m pip install -r requirements.txt`, `py app.py`). If PowerShell blocks the activate script, use Command Prompt instead.
+
+## Usage
+
+1. Choose a language from the dropdown (top right).
+2. Tap who you are, what you need, and your state, **or** type or speak your need in the box at the bottom and then pick your state.
+3. Read the results, or tap **Listen** to hear one. Tap again to stop.
+4. Use **Translate results** to translate the result text on screen.
+5. Tap **View scheme** to open the official page.
 
 ## Notes and limitations
 
-- Voice input and output depend on the browser and the voices installed on the device. Chrome and Edge work best; for Tamil, Kannada and Marathi speech, the device needs a voice for that language.
+- Voice input and output depend on the browser and the voices installed on the device. Chrome and Edge work best. For Tamil, Kannada and Marathi speech, the device needs a voice for that language.
 - Most government scheme pages are published in English. The translate bar translates the result text on screen, and the Listen button reads the text shown on screen.
+- Typed or spoken text is searched as written. Results are best with the guided taps, or with English or simple keywords, because most government pages are in English.
 - The translate bar needs an internet connection.
 - This version is built for smartphone and web access. Reaching users without a smartphone (via SMS or IVR) is a possible next step, outside the scope of this build.
 
 ## Project structure
 
 ```
-sahayak-scheme-finder/
+sahayak-scheme-finder-/
 ├── app.py               # Flask backend + SerpApi query logic
 ├── templates/
 │   └── index.html       # Chatbot page
@@ -85,7 +113,7 @@ sahayak-scheme-finder/
 │   ├── style.css        # Styling
 │   └── script.js        # Chat flow, languages, voice, results
 ├── requirements.txt
-├── .env.example
+├── .env.example         # Template for your API key (never commit your real .env)
 └── README.md
 ```
 
